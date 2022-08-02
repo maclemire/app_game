@@ -1,8 +1,20 @@
 <?php
 $title = "App_Game | Home";
-include('partials/_header.php') ;
+include('partials/_header.php');
+include("helpers/functions.php");
 // Include PD0 pour connexion BDD
-require_once("helpers/pdo.php") 
+require_once("helpers/pdo.php");
+
+// 1- Requête pour récupérer mes jeux
+$sql = "SELECT * FROM jeux";
+// 2-Prépare la requête
+$query = $pdo->prepare($sql);
+// 3-Execute ma requête
+$query->execute();
+// 4-On stocke le résultat dans une variable
+$games = $query->fetchAll();
+// debug_array($games)
+
 ?>
 
 <!-- Main content -->
@@ -30,16 +42,23 @@ require_once("helpers/pdo.php")
                 </tr>
             </thead>
             <tbody>
-                <!-- row 1 -->
-                <tr>
-                    <th>1</th>
-                    <td>Mario</td>
-                    <td>Plateform</td>
-                    <td>Switch</td>
-                    <td>59.99</td>
-                    <td>12</td>
-                    <td><a href=""><img class="w-5 h-auto" src="img/magnifying-glass.png" alt="loupe"></a></td>
-                </tr>
+                <?php
+
+                if (count($games) == 0) {
+                    echo "<td class='text-center'>Pas de jeux disponibles actuellement</td>";
+                } else { ?>
+                    <?php foreach ($games as $game) : ?>
+                        <tr>
+                            <th><?= $game['id'] ?></th>
+                            <td><?= $game['name'] ?></td>
+                            <td><?= $game['genre'] ?></td>
+                            <td><?= $game['platform'] ?></td>
+                            <td><?= $game['price'] ?></td>
+                            <td><?= $game['PEGI'] ?></td>
+                            <td><a href=""><img class="w-5 h-auto" src="img/magnifying-glass.png" alt="loupe"></a></td>
+                        </tr>
+                    <?php endforeach ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>

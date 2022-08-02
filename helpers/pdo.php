@@ -2,7 +2,7 @@
 $server = "localhost"; 
 $dbname = "app_game";
 $login = "root";
-$password = "";  // or "root"
+$password = "";  // or "root" pour mac
 
 try {
     $pdo = new PDO("mysql:host=$server;dbname=$dbname", $login, $password, array(
@@ -13,7 +13,7 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
     ));
     // Affiche message ok connexion
-    echo "Connexion établie !";
+    // echo "Connexion établie !";
 
 } catch (PDOException $e) {
     echo "Erreur de connexion : ". $e->getMessage();
