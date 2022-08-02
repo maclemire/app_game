@@ -13,10 +13,10 @@
 <body>
 
     <div class="flex px-6 py-8 justify-between bg-black">
-        <a href="/index.php" class="text-white text-xl font-bold">App_Game</a>
+        <a href="index.php" class="text-white text-xl font-bold">App_Game</a>
         <div class="text-white space-x-1.5">
-            <a href="/index.php">Accueil</a>
+            <a href="index.php">Accueil</a>
             <a href="">Jeux</a>
-            <a href="">About</a>
+            <a href="display.php">Display</a>
         </div>
     </div>

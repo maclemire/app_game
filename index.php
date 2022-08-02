@@ -1,6 +1,9 @@
 <?php
 $title = "App_Game | Home";
-include('partials/_header.php') ?>
+include('partials/_header.php') ;
+// Include PD0 pour connexion BDD
+require_once("helpers/pdo.php") 
+?>
 
 <!-- Main content -->
 
@@ -11,7 +14,7 @@ include('partials/_header.php') ?>
         <p class="text-lg font-bold">L'app qui repertorie vos jeux</p>
     </div>
 
-<!-- Table -->
+    <!-- Table -->
     <div class="overflow-x-auto mt-16">
         <table class="table w-full">
             <!-- head -->
@@ -35,7 +38,7 @@ include('partials/_header.php') ?>
                     <td>Switch</td>
                     <td>59.99</td>
                     <td>12</td>
-                    <td><img class="w-6 h-auto" src="img/magnifying-glass.png" alt="loupe"></td>
+                    <td><a href=""><img class="w-5 h-auto" src="img/magnifying-glass.png" alt="loupe"></a></td>
                 </tr>
             </tbody>
         </table>
