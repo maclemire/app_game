@@ -5,3 +5,8 @@ echo "<pre>";
   print_r($arr);
   echo "</pre>";
 }
+
+
+function protect_xss($var) {
+ return trim(htmlspecialchars($var));
+}

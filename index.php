@@ -1,4 +1,6 @@
 <?php
+//Démarrage de la session
+session_start();
 $title = "App_Game | Home";
 include('partials/_header.php');
 include("helpers/functions.php");
@@ -14,6 +16,8 @@ $query->execute();
 // 4-On stocke le résultat dans une variable
 $games = $query->fetchAll();
 // debug_array($games)
+// $games = []
+
 
 ?>
 
@@ -22,12 +26,28 @@ $games = $query->fetchAll();
 <!-- Head -->
 <div class="pt-16 wrap_content">
     <div class="wrap_content-head text-center">
-        <h1 class="text-blue-500 text-5xl text-center uppercase font-black mb-6">App Game</h1>
+        <h1 class="text-blue-500 text-5xl text-center uppercase font-black mb-6">App_Game</h1>
         <p class="text-lg font-bold">L'app qui repertorie vos jeux</p>
+        <?php
+        if ($_SESSION["error"]) { ?>
+            <div class="bg-red-400 text-white py-6">
+                <?= $_SESSION["error"] ?>
+            </div>
+        <?php } elseif ($_SESSION["success"]) { ?>
+            <div class="bg-green-400 text-white py-6">
+                <?= $_SESSION["success"] ?>;
+            </div>
+        <?php }
+        // Je vide ma variable $_SESSION ["error"] pour qu'il n'affiche pas de message en créant un array vide
+        $_SESSION["error"] = [];
+        $_SESSION["success"] = [];
+        ?>
+        
+
     </div>
 
     <!-- Table -->
-    <div class="overflow-x-auto mt-16">
+    <div class="overflow-x-auto mt-16 px-20">
         <table class="table w-full">
             <!-- head -->
             <thead>
@@ -55,7 +75,7 @@ $games = $query->fetchAll();
                             <td><?= $game['platform'] ?></td>
                             <td><?= $game['price'] ?></td>
                             <td><?= $game['PEGI'] ?></td>
-                            <td><a href=""><img class="w-5 h-auto" src="img/magnifying-glass.png" alt="loupe"></a></td>
+                            <td><a href="display.php?id=<?= $game['id'] ?>&name=<?= $game['name'] ?>"><img class="w-5 h-auto" src="img/magnifying-glass.png" alt="loupe"></a></td>
                         </tr>
                     <?php endforeach ?>
                 <?php } ?>

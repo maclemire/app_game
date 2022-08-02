@@ -12,9 +12,9 @@
 
 <body>
 
-    <div class="flex px-6 py-8 justify-between bg-black">
-        <a href="index.php" class="text-white text-xl font-bold">App_Game</a>
-        <div class="text-white space-x-1.5">
+    <div class="flex px-6 py-8 justify-between bg-gradient-to-r from-blue-800 to-blue-200">
+        <a href="index.php" class="text-white text-3xl font-bold">App_<span class="text-red-600">Game</span></a>
+        <div class="text-blue-800 text-xl font-bold space-x-1.5">
             <a href="index.php">Accueil</a>
             <a href="">Jeux</a>
             <a href="display.php">Display</a>
